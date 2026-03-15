@@ -581,6 +581,20 @@
       height: 100%;
     }
 
+    .project-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border-color);
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.02);
+    }
+
     .project-title {
       font-size: 1.05rem; font-weight: 700;
       color: var(--text-primary);
@@ -991,6 +1005,7 @@
       <div class="projects-grid">
         <div class="custom-card project-card reveal s2">
           <div class="card-glow-spot"></div>
+          <img src="../img/AutoCRM-AI.png" alt="AutoCRM" class="project-img">
           <div class="project-title">AutoCRM: AI Ticket Resolution System</div>
           <p class="project-desc">Architected a multi-agent system (LangGraph, MCP) that autonomously resolves support tickets with a 90% resolution rate. Designed Human-in-the-Loop approval workflows with guardrails for high-risk actions using Pydantic-validated tool schemas.</p>
           <div class="tech-tags">
@@ -1000,6 +1015,7 @@
         </div>
         <div class="custom-card project-card reveal s3">
           <div class="card-glow-spot"></div>
+          <img src="../img/ReadEase-AI.png" alt="ReadEaseAI" class="project-img">
           <div class="project-title">ReadEaseAI: Inclusive Reading Platform</div>
           <p class="project-desc">Developed a Next.js + TypeScript platform with 4 reading modes for dyslexia, ADHD, autism, and visual impairment users. Voice-controlled document Q&A via Web Speech API. <em style="color:var(--accent-2);">Claude Builder Club Hackathon.</em></p>
           <div class="tech-tags">
@@ -1009,6 +1025,7 @@
         </div>
         <div class="custom-card project-card reveal s4">
           <div class="card-glow-spot"></div>
+          <img src="../img/Multimodal-AI.png" alt="Multimodal Discovery" class="project-img">
           <div class="project-title">Multimodal Movie & Music Discovery</div>
           <p class="project-desc">Full stack web app (React, Next.js, AWS Lambda) for personalized discovery with semantic search. Fine-tuned CNN classifier on 6k+ audio tracks via PANNs transfer learning, achieving 95% accuracy.</p>
           <div class="tech-tags">
@@ -1018,6 +1035,7 @@
         </div>
         <div class="custom-card project-card reveal s5">
           <div class="card-glow-spot"></div>
+          <img src="../img/Face_Recognition.png" alt="Face Recognition" class="project-img">
           <div class="project-title">Distributed Face Recognition on AWS</div>
           <p class="project-desc">Designed a real-time video pipeline on AWS (EC2, Lambda, S3, SQS) with Docker/ECR autoscaling, achieving 98% accuracy.</p>
           <div class="tech-tags">
@@ -1026,6 +1044,7 @@
         </div>
         <div class="custom-card project-card reveal s6">
           <div class="card-glow-spot"></div>
+          <img src="../img/Machine_Learning.png" alt="Machine Learning" class="project-img">
           <div class="project-title">Applied ML on Real-World Datasets</div>
           <p class="project-desc">Built optimized end-to-end ML pipelines for Kaggle competitions using feature engineering and multiple predictive models.</p>
           <div class="tech-tags">
