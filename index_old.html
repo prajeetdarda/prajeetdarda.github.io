@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Prajeet Darda - Software Engineer | AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/Subject.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/main.bundle.css">
+  <script src="https://kit.fontawesome.com/4e5a72c756.js"></script>
+  <style>
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --accent-color: #f093fb;
+      --bg-gradient-start: #667eea;
+      --bg-gradient-end: #764ba2;
+      --text-primary: #2d3748;
+      --text-secondary: #4a5568;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f7fafc;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+      --border-color: #e2e8f0;
+    }
+
+    body.dark-mode {
+      --primary-color: #818cf8;
+      --secondary-color: #a78bfa;
+      --accent-color: #c084fc;
+      --bg-gradient-start: #4c1d95;
+      --bg-gradient-end: #1e1b4b;
+      --text-primary: #f7fafc;
+      --text-secondary: #e2e8f0;
+      --bg-primary: #1a202c;
+      --bg-secondary: #2d3748;
+      --card-bg: rgba(45, 55, 72, 0.95);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+      --border-color: #4a5568;
+    }
+
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 50px;
+      padding: 8px 16px;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .dark-mode-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Hero Section */
+    .hero.is-primary {
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero.is-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .hero .image img {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .hero .image img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    /* Section Backgrounds */
+    .section {
+      background: var(--bg-primary);
+    }
+
+    .section:nth-child(even) {
+      background: var(--bg-secondary);
+    }
+
+    /* Modern Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-color);
+    }
+
+    .card-content {
+      color: var(--text-primary);
+    }
+
+    /* Title Styling */
+    .title {
+      color: var(--text-primary);
+      font-weight: 700;
+      position: relative;
+    }
+
+    .section > .container > .title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      border-radius: 2px;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+    }
+
+    /* Tags */
+    .tag {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white !important;
+      border: none;
+      font-weight: 600;
+      padding: 6px 14px;
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Buttons */
+    .button.is-primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .button.is-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .button.is-primary.is-outlined {
+      background: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .button.is-primary.is-outlined:hover {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+    }
+
+    /* Links in Hero */
+    .hero a.icon {
+      transition: all 0.3s ease;
+    }
+
+    .hero a.icon:hover {
+      transform: translateY(-3px);
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Content Text */
+    .content p, .content li {
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Contact Icons */
+    .level-item .icon.is-large {
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .level-item:hover .icon.is-large {
+      transform: scale(1.2) rotate(5deg);
+      color: var(--secondary-color);
+    }
+
+    .level-item .heading a {
+      color: var(--text-secondary);
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* HR Styling */
+    hr {
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      height: 2px;
+      border: none;
+    }
+
+    /* Media Content */
+    .media-content {
+      color: var(--text-primary);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card, .section {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Glass Morphism Effect for Cards */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Skill Section Styling */
+    .content strong {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+    <span id="theme-text">Dark</span>
+  </button>
+
+  <section class="hero is-primary">
+    <div class="hero-body" style="padding-top: 1rem;">
+      <div class="container">
+        <div class="level" style="margin-bottom: 0.5rem;">
+          <div class="level-item has-text-centered">
+            <figure class="image is-128x128">
+              <img class="is-rounded" src="img/Subject.png" alt="Prajeet Darda">
+            </figure>
+          </div>
+        </div>
+        <div class="columns has-text-centered">
+          <div class="column">
+            <h1 class="title is-1">
+              Prajeet Darda
+            </h1>
+            <h2 class="subtitle">
+              Software Engineer |  MS CS @ ASU | 3+ Years | Full Stack & AI/ML 
+            </h2>
+            <p style="display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 1rem;">
+             
+              <a href="https://github.com/prajeetdarda" class="icon has-text-light" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; padding: 0 0.5rem;">
+                <i class="fab fa-github"></i> <strong>GitHub</strong>
+              </a>
+              &nbsp;<span style="color: rgba(255, 255, 255, 0.5);">|</span>&nbsp;
+               <a href="docs/prajeet_darda_resume_swe.pdf" class="icon has-text-light" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; padding: 0 0.5rem;">
+                <i class="fas fa-file-pdf"></i> <strong>Resume</strong>
+              </a>
+              &nbsp;<span style="color: rgba(255, 255, 255, 0.5);">|</span>&nbsp;
+              <a href="https://linkedin.com/in/prajeet-darda" class="icon has-text-light" target="_blank" style="display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; padding: 0 0.5rem;">
+                <i class="fab fa-linkedin-in"></i> <strong>LinkedIn</strong>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">About Me</h1>
+      <hr />
+      <p>I am a recent Master's in Computer Science graduate from Arizona State University (4.0 GPA) and a Software Engineer with 3+ years building production microservices, scalable REST APIs, and SQL databases at scale. Strong fullstack experience across React, Spring Boot, and cloud-native AWS with hands-on AI/ML integration (RAG, multi-agent systems).</p>
+      </br>
+      <p>Currently at Arizona State University’s Global Futures Laboratory, I build multi-agent AI systems for nuclear research assessment. Previously at Topline Co., Ltd (Japan), I led the modernization of a legacy PHP CRM monolith to React and Spring Boot microservices managing 1M+ telecom client records, implemented Redis caching cutting P90 latency from 400ms to 50ms, and set up CI/CD pipelines reducing deployment time by 64%.</p>
+      </br>
+      <p>An IIT Mandi and ASU alum (MS CS, 4.0 GPA) and AWS Certified Developer, I am passionate about leveraging AI Agents, RAG, and cloud-native architectures to solve complex problems at scale.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Experience</h1>
+      <hr />
+      <div class="card">
+        <div class="card-content">
+          <div class="media" style="margin-bottom: 1rem;">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="img/ASU-logo.png" alt="Arizona State University" style="margin-top: 10px;">
+              </figure>
+            </div>
+            <div class="media-content" style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div style="flex: 1;">
+                <p class="title is-4" style="margin-bottom: 0.75rem; line-height: 1.3;">Arizona State University – Global Futures Laboratory</p>
+                <p class="subtitle is-5" style="margin-bottom: 0; line-height: 1.5;">Software Engineer, AI</p>
+              </div>
+              <div style="text-align: right;">
+                <p class="subtitle is-6" style="margin-bottom: 0.25rem;">
+                  <time datetime="2026-2">Feb 2026</time> - Present
+                </p>
+                <p class="subtitle is-6" style="margin-bottom: 0;">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                    <span>Tempe, AZ</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            <p>Building multi-agent AI systems for nuclear research assessment at ASU's Global Futures Laboratory.</p>
+            <ul>
+              <li>Built a multi-agent AI system synthesizing 100+ DOE research papers for MARVEL nuclear microreactor readiness assessment</li>
+              <li>Developed a RAG pipeline with PostgreSQL persistence and vector embeddings to extract insights from raw research papers</li>
+              <li>Leveraged LangGraph, LangChain, and prompt engineering, cutting manual analysis by 40%, saving 10+ hrs/week</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">LangGraph</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">RAG</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">AI Agents</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-gap">
+        <div class="card-content">
+          <div class="media" style="margin-bottom: 1rem;">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="img/logo.jpg" alt="Topline Co., Ltd" style="margin-top: 10px;">
+              </figure>
+            </div>
+            <div class="media-content" style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div style="flex: 1;">
+                <p class="title is-4" style="margin-bottom: 0.75rem; line-height: 1.3;">Topline Co. Ltd.</p>
+                <p class="subtitle is-5" style="margin-bottom: 0; line-height: 1.5;">Software Engineer</p>
+              </div>
+              <div style="text-align: right;">
+                <p class="subtitle is-6" style="margin-bottom: 0.25rem;">
+                  <time datetime="2020-10">Oct 2020</time> - <time datetime="2023-11">Nov 2023</time>
+                </p>
+                <p class="subtitle is-6" style="margin-bottom: 0;">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                    <span>Saitama, Japan</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            <p>Led modernization of enterprise CRM systems and built high-performance microservices for telecom operations.</p>
+            <ul>
+              <li>Led modernization of a legacy PHP CRM monolith to React and Spring Boot microservices managing 1M+ telecom client records</li>
+              <li>Secured exposed REST APIs with Role-Based Access Control, OAuth2/JWT, and AES-256 encryption behind an API gateway</li>
+              <li>Identified a critical database bottleneck in customer search and implemented Redis caching, cutting P90 latency from 400ms to 50ms</li>
+              <li>Built React UIs with Material UI and react-i18n (EN/JP) for customer search, ticketing, and lead tracking, cutting page load by 67%</li>
+              <li>Replaced batch reports with Kafka event streaming, enabling real-time agent dashboards for call resolution and conversion metrics</li>
+              <li>Set up CI/CD pipelines with GitHub Actions for independently deployable services, reducing deployment time by 64%</li>
+              <li>Drove team-wide testing initiatives in Agile sprints using JUnit and Jest, increasing code coverage from 43% to 88%</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">Java</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Redis</span>
+              <span class="tag">Kafka</span>
+              <span class="tag">OAuth2/JWT</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Material UI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-gap">
+        <div class="card-content">
+          <div class="media" style="margin-bottom: 1rem;">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="img/logo.jpg" alt="Topline Co., Ltd" style="margin-top: 10px;">
+              </figure>
+            </div>
+            <div class="media-content" style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div style="flex: 1;">
+                <p class="title is-4" style="margin-bottom: 0.75rem; line-height: 1.3;">Topline Co. Ltd.</p>
+                <p class="subtitle is-5" style="margin-bottom: 0; line-height: 1.5;">Software Engineering Intern</p>
+              </div>
+              <div style="text-align: right;">
+                <p class="subtitle is-6" style="margin-bottom: 0.25rem;">
+                  <time datetime="2020-6">Jun 2020</time> - <time datetime="2020-8">Aug 2020</time>
+                </p>
+                <p class="subtitle is-6" style="margin-bottom: 0;">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                    <span>Saitama, Japan</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            <p>Developed real-time call analytics and NLP-powered solutions for telecom customer service operations.</p>
+            <ul>
+              <li>Developed a real-time call analytics platform (Flask + Google Speech-to-Text) processing 100+ calls/day for telecom agents</li>
+              <li>Automated end-to-end transcription, translation, and sentiment analysis to improve call handling for cross-functional teams</li>
+              <li>Delivered NLP-powered dashboards reducing feedback cycle time by 33%, refined through code reviews with senior engineers</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">NLP</span>
+              <span class="tag">Google Cloud</span>
+              <span class="tag">Speech-to-Text</span>
+              <span class="tag">Sentiment Analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Projects</h1>
+      <hr />
+      <div class="columns is-multiline">
+        <div class="column is-6">
+          <div class="card" style="height: 100%;">
+            <div class="card-content" style="display: flex; flex-direction: column; height: 100%;">
+              <p class="title is-5">AutoCRM: AI Ticket Resolution System</p>
+              <p class="subtitle is-6">Architected a multi-agent system (LangGraph, MCP) that autonomously resolves support tickets with a 90% resolution rate. Designed Human-in-the-Loop approval workflows with guardrails for high-risk actions using Pydantic-validated tool schemas.</p>
+              <div class="tags" style="margin-top: auto; margin-bottom: 1rem;">
+                <span class="tag">LangGraph</span>
+                <span class="tag">MCP</span>
+                <span class="tag">AI Agents</span>
+                <span class="tag">Pydantic</span>
+              </div>
+              <a href="https://auto-crm-prajeet.vercel.app/" class="button is-primary is-outlined is-fullwidth" target="_blank">
+                <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                <span>View Demo</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6">
+          <div class="card" style="height: 100%;">
+            <div class="card-content" style="display: flex; flex-direction: column; height: 100%;">
+              <p class="title is-5">ReadEaseAI: Inclusive Reading Platform</p>
+              <p class="subtitle is-6">Developed a Next.js + TypeScript platform with 4 reading modes for dyslexia, ADHD, autism, and visual impairment users. Integrated voice-controlled document Q&A for blind users via Web Speech API with conversation memory. <em>Claude Builder Club Hackathon.</em></p>
+              <div class="tags" style="margin-top: auto; margin-bottom: 1rem;">
+                <span class="tag">Next.js</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Claude AI</span>
+                <span class="tag">Web Speech API</span>
+              </div>
+              <a href="https://readease-ai.vercel.app/" class="button is-primary is-outlined is-fullwidth" target="_blank">
+                <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                <span>View Demo</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6">
+          <div class="card" style="height: 100%;">
+            <div class="card-content" style="display: flex; flex-direction: column; height: 100%;">
+              <p class="title is-5">Multimodal Movie & Music Discovery Platform</p>
+              <p class="subtitle is-6">Shipped a full stack web app (React, Next.js, AWS Lambda) for personalized movie and music discovery with semantic search. Built a data pipeline to fine-tune a CNN classifier on 6k+ audio tracks via PANNs transfer learning, achieving 95% accuracy.</p>
+              <div class="tags" style="margin-top: auto; margin-bottom: 1rem;">
+                <span class="tag">React</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">AWS Lambda</span>
+                <span class="tag">CNN</span>
+              </div>
+              <a href="https://ai-project-prajeet.vercel.app" class="button is-primary is-outlined is-fullwidth" target="_blank">
+                <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+                <span>View Demo</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6">
+          <div class="card" style="height: 100%;">
+            <div class="card-content" style="display: flex; flex-direction: column; height: 100%;">
+              <p class="title is-5">Distributed Face Recognition System on AWS</p>
+              <p class="subtitle is-6">Designed a real-time video pipeline on AWS (EC2, Lambda, S3, SQS) with Docker/ECR autoscaling, achieving 98% accuracy.</p>
+              <div class="tags" style="margin-top: auto;">
+                <span class="tag">AWS</span>
+                <span class="tag">Docker</span>
+                <span class="tag">EC2</span>
+                <span class="tag">Lambda</span>
+                <span class="tag">SQS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-6">
+          <div class="card" style="height: 100%;">
+            <div class="card-content" style="display: flex; flex-direction: column; height: 100%;">
+              <p class="title is-5">Applied Machine Learning on Real-World Datasets</p>
+              <p class="subtitle is-6">Built optimized end-to-end ML pipelines for Kaggle competitions using feature engineering and multiple predictive models.</p>
+              <div class="tags" style="margin-top: auto; margin-bottom: 1rem;">
+                <span class="tag">Python</span>
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">Pandas</span>
+              </div>
+              <a href="https://github.com/prajeetdarda/ml-projects" class="button is-primary is-outlined is-fullwidth" target="_blank">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>View on GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Education</h1>
+      <hr />
+      <div class="card">
+        <div class="card-content">
+          <div class="content" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div style="flex: 1;">
+              <p class="title is-4" style="margin-bottom: 0.75rem; line-height: 1.3;">Arizona State University (ASU)</p>
+              <p class="subtitle is-5" style="margin-bottom: 0; line-height: 1.5;">Master of Science in Computer Science (GPA: 4.00/4.00)</p>
+            </div>
+            <div style="text-align: right; min-width: 150px; margin-left: 1rem;">
+              <p class="subtitle is-6" style="margin-bottom: 0.25rem;">
+                <time datetime="2024-1">Jan 2024</time> - <time datetime="2025-12">Dec 2025</time>
+              </p>
+              <p class="subtitle is-6" style="margin-bottom: 0;">
+                <span class="icon-text">
+                  <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                  <span>Tempe, AZ</span>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="content">
+            <p>Graduated with focus on distributed systems, AI/ML, and cloud computing.</p>
+            <div class="tags" style="margin-top: 1rem;">
+              <span class="tag">Information Assurance & Security</span>
+              <span class="tag">Artificial Intelligence</span>
+              <span class="tag">Statistical Machine Learning</span>
+              <span class="tag">Software Security</span>
+              <span class="tag">Data Mining</span>
+              <span class="tag">Knowledge Representation</span>
+              <span class="tag">Cloud Computing</span>
+              <span class="tag">Advanced Computer Network Security</span>
+              <span class="tag">Engineering Blockchain Applications</span>
+              <span class="tag">Data Processing at Scale</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card card-gap">
+        <div class="card-content">
+          <div class="content" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <div style="flex: 1;">
+              <p class="title is-4" style="margin-bottom: 0.75rem; line-height: 1.3;">Indian Institute of Technology (IIT) Mandi</p>
+              <p class="subtitle is-5" style="margin-bottom: 0; line-height: 1.5;">Bachelor of Technology, Computer Science & Engineering</p>
+            </div>
+            <div style="text-align: right;">
+              <p class="subtitle is-6" style="margin-bottom: 0.25rem;">
+                <time datetime="2017-7">Jul 2017</time> - <time datetime="2021-5">May 2021</time>
+              </p>
+              <p class="subtitle is-6" style="margin-bottom: 0;">
+                <span class="icon-text">
+                  <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                  <span>Mandi, India</span>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="content">
+            <p>Graduated with a strong foundation in computer science fundamentals, data structures, algorithms, and software engineering.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Certifications</h1>
+      <hr />
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <p class="title is-4">AWS Certified Developer – Associate</p>
+            <p class="subtitle is-5">Amazon Web Services (AWS) | 2025</p>
+          </div>
+          <div class="content">
+            <!-- <p><strong>Certification ID: DVA-C02</strong></p> -->
+            <p>Demonstrates expertise in developing, deploying, and debugging cloud-based applications using AWS.</p>
+            <a href="https://www.credly.com/badges/49e16557-e243-48b1-ac7d-19ce46fe77d4/public_url" class="button is-primary is-outlined is-fullwidth" target="_blank" style="margin-top: 1rem; justify-content: center;">
+              <span class="icon"><i class="fas fa-external-link-alt"></i></span>
+              <span>View Credential</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
+    <div class="container">
+      <h1 class="title">Skills</h1>
+      <hr />
+      <div class="content" style="font-size: 0.95rem;">
+        <p style="margin-bottom: 0.5rem;"><strong>Languages:</strong> Python, Java, TypeScript, JavaScript, SQL, Bash, C/C++, HTML/CSS, Go, Rust</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Frontend:</strong> React, Next.js, Angular, Redux, Tailwind CSS, GraphQL, WebSockets, REST APIs, Jest, Webpack</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Backend:</strong> Spring Boot, Node.js, Express.js, FastAPI, PostgreSQL, MySQL, MongoDB, Redis, Kafka, RabbitMQ, Elasticsearch, Pinecone</p>
+        <p style="margin-bottom: 0.5rem;"><strong>AI/ML:</strong> LangChain, LangGraph, RAG, AI Agents, MCP, OpenAI API, Hugging Face, PyTorch, TensorFlow, Pandas</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Cloud & Infrastructure:</strong> AWS, GCP, Docker, Kubernetes, Terraform, CI/CD, Git, Prometheus, Grafana, Jenkins, Linux, Jira</p>
+        <p style="margin-bottom: 0;"><strong>Fundamentals:</strong> Object-Oriented Programming, Data Structures & Algorithms, System Design, Distributed Systems, Scrum, HTTP</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Contact</h1>
+      <hr />
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <a href="https://github.com/prajeetdarda" class="icon is-large">
+              <i class="fab fa-2x fa-github"></i>
+            </a>
+            <p class="heading"><a href="https://github.com/prajeetdarda">github.com/prajeetdarda</a></p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <a href="mailto:prajeetdarda@gmail.com" class="icon is-large">
+              <i class="fas fa-2x fa-envelope"></i>
+            </a>
+            <p class="heading"><a href="mailto:prajeetdarda@gmail.com">prajeetdarda@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <a href="https://linkedin.com/in/prajeet-darda" class="icon is-large">
+              <i class="fab fa-2x fa-linkedin-in"></i>
+            </a>
+            <p class="heading"><a href="https://linkedin.com/in/prajeet-darda">linkedin.com/in/prajeet-darda</a></p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <a href="tel:+12017459455" class="icon is-large">
+              <i class="fas fa-2x fa-phone"></i>
+            </a>
+            <p class="heading"><a href="tel:+12017459455">+1 (201) 745-9455</a></p>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Prajeet Darda</strong> © 2026
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/bundle.js"></script>
+  <script>
+    // Dark mode functionality
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById('theme-icon');
+      const text = document.getElementById('theme-text');
+
+      body.classList.toggle('dark-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        icon.className = 'fas fa-sun';
+        text.textContent = 'Light';
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        icon.className = 'fas fa-moon';
+        text.textContent = 'Dark';
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    }
+
+    // Check for saved user preference
+    document.addEventListener('DOMContentLoaded', function() {
+      const darkMode = localStorage.getItem('darkMode');
+      const icon = document.getElementById('theme-icon');
+      const text = document.getElementById('theme-text');
+
+      if (darkMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        icon.className = 'fas fa-sun';
+        text.textContent = 'Light';
+      }
+    });
+  </script>
+</body>
+
+</html>
